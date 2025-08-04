@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    /* Definindo as Fontes Globais */
+    --font-family: "Poppins", sans-serif;
+    --font-family2: "Schoolbell", cursive;
+    --h1: 600 40px/125% var(--font-family);
+    --heading1: 700 32px/120% var(--font-family);
+    --heading2: 600 24px/125% var(--font-family);
+    --heading3: 400 20px/120% var(--font-family);
+    --heading4: 400 16px/120% var(--font-family);
+    --heading5: 600 16px/120% var(--font-family);
+    --font-school: 400 20px/100% var(--font-family2);
+    --heading: 700 16px/120% var(--font-family);
+
+
+
+    /* Paleta de cores */
+    /* Brand */
+    --brand-light: #F67841;
+    --brand-mid: #F3541C;
+    --brand-dark: #E43A12;
+
+    /* Text */
+    --text-primary: #292524;
+    --text-secondary: #a29f9a;
+    --text-tertiary: #4e4d4d;
+    --text-highlight: #E43A12;
+
+    /* Surface */
+    --surface-primary: #FFFFFF;
+    --surface-secondary: #FEE7D6;
+    --surface-disabled: #e7e5e46a;
+
+    /* Stroke */
+    --stroke-default: #d6d3d158;
+    --stroke-highlight: #F3541C;
+
+    /* Semantic */
+    --semantic-error: #DC2626;
+
+    /* Supporting */
+    --orange: #F9A474;
+    --yellow: #FEDF6F;
+    --green: #C7D78D;
+    --blue: #B8CEDC;
+    --violet: #C3B2E7;
+    --pink: #F682A5;
+
+    --surface-error-message: #FFEEEE;
+    /* Fundo do balão de erro (vermelho bem claro) */
+    --stroke-error-message: #DC2626;
+    /* Borda do balão de erro (vermelho) */
+    --text-error-message: #DC2626;
+    /* Cor do texto do balão de erro */
+    --semantic-error-rgb: 220, 38, 38;
+    /* RGB para uso em rgba(), se precisar */
+}
+
+#container {
+    width: 528px;
+    margin: auto;
+}
+
+h2 {
+    font: var(--heading2);
+    color: var(--text-primary);
+}
+
+h3 {
+    font: var(--heading5);
+    color: var(--text-primary);
+}
+
+p {
+    font: var(--heading4);
+    color: var(--text-secondary);
+}

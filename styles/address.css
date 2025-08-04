@@ -1,0 +1,72 @@
+#address {
+    width: 528px;
+    margin: auto;
+    margin-block: 48px;
+}
+
+/* Aplicar display flex para alinhar os campos lado a lado */
+.form-row {
+    display: flex;
+    gap: 24px;
+    /* Espaço entre os campos na mesma linha (ex: Rua e Número) */
+    margin-bottom: 24px;
+    /* Espaço abaixo da linha de campos */
+    /* Ajuste a margem-bottom conforme o espaçamento desejado entre suas linhas de campos */
+}
+
+/* Fazer os grupos de formulário dentro de um form-row ocuparem o espaço disponível */
+.form-row .form-group {
+    flex: 1;
+    /* Faz com que cada form-group dentro de um form-row ocupe igual espaço */
+    margin-bottom: 0;
+    /* Remove a margem inferior padrão do form-group para não duplicar com o gap/margin-bottom do form-row */
+}
+
+/* Estilo específico para campos de "metade" da largura (como Número e Estado) */
+.form-row .form-group-half {
+    flex: 0 0 calc(30% - 12px);
+    /* Exemplo: Ocupa cerca de 30% da largura menos metade do gap */
+    /* Ajuste '30%' para a largura que melhor se encaixe no seu design */
+    /* Você pode usar um valor fixo se o número/estado tiver largura previsível. Ex: flex: 0 0 100px; */
+    /* Para 70%/30% você faria:
+     .form-row .form-group:not(.form-group-half) { flex: 0 0 calc(70% - 12px); }
+     .form-row .form-group-half { flex: 0 0 calc(30% - 12px); }
+  */
+}
+
+/* --- Estilo para o Input/Textarea/Select DESABILITADO --- */
+input:disabled,
+textarea:disabled,
+select:disabled {
+    background-color: var(--surface-disabled);
+    /* Fundo do campo desabilitado */
+    color: var(--text-disabled);
+    /* Cor do texto dentro do campo desabilitado */
+    border-color: var(--stroke-default);
+    /* Cor da borda do campo desabilitado */
+    cursor: not-allowed;
+    /* Muda o cursor */
+    box-shadow: none;
+    /* Remove qualquer sombra de foco */
+    transition: none;
+    /* Impede transições ao desabilitar */
+}
+
+/* Estilo do placeholder para inputs desabilitados */
+input:disabled::placeholder {
+    color: var(--text-secondary);
+    /* Cor do placeholder desabilitado (ainda mais claro) */
+}
+
+/* Inclua os prefixos para o placeholder desabilitado se ainda usar */
+input:disabled::-webkit-input-placeholder {
+    color: var(--text-secondary);
+}
+
+input:disabled:-ms-input-placeholder {
+    color: var(--text-secondary);
+}
+
+input:disabled::-ms-input-placeholder {
+    color: var(--text-secondary);
+}

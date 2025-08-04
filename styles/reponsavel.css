@@ -1,0 +1,626 @@
+/* --- Novo Contêiner para Seções Centralizadas --- */
+/* Esta classe deve ser aplicada à <div class="form-section-container">
+   que envolve as seções de "Informações do Responsável" e "Opções de Matrícula" no seu HTML. */
+.form-section-container {
+    width: 528px;
+    /* Define a largura fixa para esta seção */
+    margin: 0 auto;
+    /* Centraliza o contêiner horizontalmente na tela */
+    /* '0' para margem superior/inferior, 'auto' para margem esquerda/direita */
+    padding: 48px 0;
+    /* Adiciona espaçamento interno: 48px em cima e embaixo, 0 nas laterais */
+    /* Isso cria o espaço vertical que você vê na imagem (margem/padding entre seções) */
+    /* Opcional: Para visualização durante o desenvolvimento */
+    /* border: 1px dashed purple; */
+    /* background-color: #f9f9f9; */
+}
+
+#responsibleName {
+    margin-bottom: 14px;
+}
+
+.gap {
+    margin-top: 24px;
+}
+
+/* --- Estilos para o Texto Auxiliar (abaixo do "Nome do responsável") --- */
+/* Aplique esta classe ao <p class="helper-text"> que você adicionou no HTML */
+.helper-text {
+    font-size: 0.9em;
+    /* Tamanho de fonte um pouco menor */
+    color: var(--text-secondary);
+    /* Usa a cor cinza mais clara para textos auxiliares */
+    margin-top: -8px;
+    /* Ajusta a margem superior para aproximar do campo de nome */
+    /* (Ajuste este valor conforme necessário para o seu design exato) */
+    margin-bottom: 24px;
+    /* Espaço abaixo deste texto para o próximo campo */
+    display: block;
+    /* Garante que ocupe sua própria linha */
+    /* Adicione a família de fontes padrão se não estiver herdando bem */
+    font-family: var(--font-family);
+}
+
+/* --- Estilo da Mensagem de Erro Específica (abaixo do E-mail, por exemplo) --- */
+/* Aplique esta classe ao <span class="error-message"> no seu HTML */
+.error-message {
+    display: none;
+    /* Escondida por padrão */
+    margin-top: 4px;
+    /* Pequeno espaço acima da mensagem de erro */
+    font-size: 0.85em;
+    /* Tamanho de fonte menor para a mensagem */
+    color: var(--semantic-error);
+    /* Usa a cor vermelha de erro do seu :root */
+    font-weight: 500;
+    /* Deixa o texto um pouco mais encorpado */
+    text-align: left;
+    /* Alinhamento de texto padrão */
+    font-family: var(--font-family);
+    /* Garante a fonte correta */
+}
+
+/* Classe para MOSTRAR a mensagem de erro (adicionada via JavaScript) */
+.error-message.show {
+    display: block;
+    /* Torna a mensagem visível */
+}
+
+/* --- Estilos para os Títulos das Seções (h3.dados) --- */
+/* Para garantir que os títulos como "Informações do responsável" tenham o espaçamento correto */
+h3.dados {
+    /* Baseado no espaçamento de 48px de padding do .form-section-container */
+    /* E no espaçamento de 24px entre os form-groups */
+    margin-bottom: 24px;
+    /* Espaço abaixo do título antes do primeiro form-group */
+    color: var(--text-primary);
+    /* Cor do texto do título */
+    /* Use as suas variáveis de heading para o estilo do h3 se tiver uma específica */
+    /* font: var(--heading2); */
+    /* Exemplo, se você tiver um --heading2 para h3 */
+    font-size: 24px;
+    /* Exemplo de tamanho */
+    font-weight: 600;
+    /* Exemplo de peso */
+    font-family: var(--font-family);
+}
+
+
+
+
+
+/* --- Classe para Esconder Elementos Visivelmente (para acessibilidade) --- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+
+
+/* --- Estilo para o Grupo de Cards de Seleção (contêiner flexível) --- */
+.card-selection-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    /* Espaço entre os cards */
+    width: 100%;
+    /* Ocupa a largura total do contêiner pai (seu main de 528px) */
+    margin-top: 16px;
+    /* Espaço entre o label do grupo e os cards */
+    margin-bottom: 24px;
+}
+
+/* --- Estilo Básico de CADA Selection Card (o LABEL visual) --- */
+.selection-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 16px;
+    box-sizing: border-box;
+
+    border: 2px solid var(--stroke-default);
+    border-radius: 8px;
+    background-color: var(--surface-primary);
+    cursor: pointer;
+
+    position: relative;
+    /* Essencial para posicionar o checkpoint dentro do card */
+    overflow: hidden;
+    /* Garante que o check não vaze */
+
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Largura ESPECÍFICA para cards de 2 colunas (Turnos) --- */
+/* Aplique esta classe extra ao .card-selection-group da seção de turno no HTML */
+.turno-options .selection-card {
+    width: 252px;
+    /* (528px - 24px) / 2 = 252px */
+    height: 152px;
+    /* Altura do Figma para 2 colunas */
+}
+
+/* --- Largura padrão para cards de 3 colunas (Esportes) --- */
+/* Esta regra se aplica ao `.card-selection-group` que NÃO tem a classe `.turno-options` */
+.card-selection-group:not(.turno-options) .selection-card {
+    width: 160px;
+    /* (528px - 2*24px) / 3 = 160px */
+    height: 160px;
+    /* Para ser quadrado */
+}
+
+/* --- Estilo do Ícone dentro do Card --- */
+.selection-card .card-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--text-primary);
+    /* Cor padrão do ícone */
+    transition: color 0.3s ease;
+}
+
+/* --- Estilo do Texto dentro do Card --- */
+.selection-card .card-text {
+    font-size: var(--body-font-size);
+    font-weight: var(--body-font-weight);
+    font-family: var(--font-family);
+    color: var(--text-primary);
+    margin: 0;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+/* --- Estilo para o Checkpoint nos Selection Cards (o círculo com V) --- */
+.selection-card::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    /* Posição do topo */
+    left: 8px;
+    /* Posição da esquerda */
+    width: 24px;
+    /* Tamanho do círculo */
+    height: 24px;
+    border-radius: 50%;
+    /* Faz um círculo */
+    background-color: var(--stroke-highlight);
+    /* Fundo laranja do círculo */
+    border: 1px solid var(--stroke-highlight);
+    /* Borda do círculo */
+
+    /* Checkmark SVG (branco) */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23FFFFFF"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 16px 16px;
+    /* Tamanho do ícone de check dentro do círculo */
+
+    transform: scale(0);
+    /* Começa invisível e se expande */
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+
+/* --- ESTADOS DOS SELECTION CARDS --- */
+
+/* Hover */
+.selection-card:hover {
+    border-color: var(--stroke-highlight);
+}
+
+/* Foco (para ambos radio e checkbox) */
+input[type="radio"].sr-only:focus+.selection-card,
+input[type="checkbox"].sr-only:focus+.selection-card {
+    border-color: var(--stroke-highlight);
+    box-shadow: 0 0 0 3px rgba(var(--semantic-error-rgb), 0.2);
+}
+
+/* SELECIONADO (CHECKED) - Aplica a borda e o fundo destacados */
+input[type="radio"].sr-only:checked+.selection-card,
+input[type="checkbox"].sr-only:checked+.selection-card {
+    border-color: var(--stroke-highlight);
+    background-color: var(--surface-secondary);
+}
+
+/* MOSTRAR o Checkpoint quando o card está SELECIONADO */
+input[type="radio"].sr-only:checked+.selection-card::after,
+input[type="checkbox"].sr-only:checked+.selection-card::after {
+    transform: scale(1);
+    /* Faz o checkpoint aparecer */
+    opacity: 1;
+}
+
+/* Mudar a cor do ícone e do texto quando o card está selecionado */
+input[type="radio"].sr-only:checked+.selection-card .card-icon,
+input[type="checkbox"].sr-only:checked+.selection-card .card-icon {
+    color: var(--brand-mid);
+    /* Cor do ícone selecionado */
+}
+
+input[type="radio"].sr-only:checked+.selection-card .card-text,
+input[type="checkbox"].sr-only:checked+.selection-card .card-text {
+    color: var(--text-primary);
+    font-weight: 600;
+    /* Texto em negrito quando selecionado */
+}
+
+
+/* ========================================================================= */
+/* --- Estilos para o CHECKBOX Simples (como "Declara que li...") --- */
+/* ========================================================================= */
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    /* Espaço entre o quadrado do checkbox e o texto */
+    cursor: pointer;
+    font-size: var(--body-font-size);
+    font-family: var(--font-family);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+/* O Quadrado VISUAL do Checkbox (pseudoelemento ::before no label) */
+.checkbox-label::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--stroke-default);
+    border-radius: 4px;
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* O Checkmark SVG dentro do Quadrado */
+.checkbox-label::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    /* Posição do checkmark dentro do quadrado (ajuste fino) */
+    left: 5px;
+    /* Posição do checkmark dentro do quadrado (ajuste fino) */
+    width: 12px;
+    height: 12px;
+
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23FFFFFF"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+
+/* --- ESTADOS DO CHECKBOX Simples --- */
+
+/* Hover */
+input[type="checkbox"].sr-only:hover+.checkbox-label::before {
+    border-color: var(--stroke-highlight);
+}
+
+/* Foco */
+input[type="checkbox"].sr-only:focus+.checkbox-label::before {
+    border-color: var(--stroke-highlight);
+    box-shadow: 0 0 0 3px rgba(var(--semantic-error-rgb), 0.2);
+}
+
+/* CHECKED (Selecionado) */
+input[type="checkbox"].sr-only:checked+.checkbox-label::before {
+    background-color: var(--stroke-highlight);
+    border-color: var(--stroke-highlight);
+}
+
+/* MOSTRAR o Checkmark quando o checkbox está SELECIONADO */
+input[type="checkbox"].sr-only:checked+.checkbox-label::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- Estilos para Mensagens de Erro de Grupo (se você as usar com JS) --- */
+/* Estas são as mensagens que aparecem se o usuário não selecionar algo requerido
+   ou exceder o limite de checkbox. Elas são controladas por JS (adicionar/remover classe .show). */
+.error-message {
+    display: none;
+    /* Escondido por padrão */
+    margin-top: 8px;
+    /* Espaço entre o grupo de cards e a mensagem */
+    font-size: 0.85em;
+    color: var(--semantic-error);
+    font-weight: 500;
+    text-align: left;
+}
+
+.error-message.show {
+    display: block;
+    /* Torna a mensagem visível */
+}
+
+
+
+
+
+/* --- Contêiner para os Botões de Ação --- */
+.form-actions {
+    display: flex;
+    /* Alinha os botões lado a lado */
+    justify-content: flex-end;
+    /* Alinha os botões à direita (se houver espaço) */
+    gap: 16px;
+    /* Espaço entre os botões */
+    margin-top: 48px;
+    /* Espaço acima dos botões, ajuste conforme o Figma */
+    padding-top: 24px;
+    /* Opcional: padding superior para simular linha divisória invisível */
+    border-top: 1px solid var(--stroke-default);
+    /* Linha divisória fina no topo, como na imagem */
+    padding-bottom: 60px;
+}
+
+/* --- Estilo Base para TODOS os Botões --- */
+.btn {
+    padding: 12px 24px;
+    /* Espaçamento interno (ajuste conforme o Figma) */
+    border-radius: 8px;
+    /* Cantos arredondados */
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: var(--button-font-size);
+    font-weight: var(--button-font-weight);
+    line-height: var(--button-line-height);
+    /* Ajusta a altura da linha para centralizar o texto */
+    text-decoration: none;
+    /* Para links que se parecem com botões */
+    display: inline-flex;
+    /* Para centralizar conteúdo se houver ícones etc. */
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    /* Evita que o texto quebre a linha */
+
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Estilo para o Botão PRIMÁRIO ("Fazer matrícula") --- */
+.btn-primary {
+    background-color: var(--brand-mid);
+    /* Fundo laranja preenchido */
+    color: var(--text-button-primary);
+    /* Texto branco */
+    border: 2px solid var(--brand-mid);
+    /* Borda da mesma cor do fundo */
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--brand-dark);
+    /* Fundo laranja mais escuro no hover/focus */
+    border-color: var(--brand-dark);
+    box-shadow: 0 0 0 3px rgba(var(--stroke-highlight-rgb), 0.2);
+    /* Sombra de foco */
+}
+
+.btn-primary:active {
+    background-color: var(--brand-dark);
+    /* Estado de clique */
+    border-color: var(--brand-dark);
+}
+
+.btn-primary:disabled {
+    background-color: var(--surface-disabled);
+    /* Fundo cinza para desabilitado */
+    border-color: var(--stroke-disabled);
+    /* Borda cinza para desabilitado */
+    color: var(--text-disabled);
+    /* Texto cinza para desabilitado */
+    cursor: not-allowed;
+    opacity: 0.7;
+    /* Opacidade reduzida */
+}
+
+/* --- Estilo para o Botão SECUNDÁRIO ("Salvar respostas") --- */
+.btn-secondary {
+    background-color: var(--surface-primary);
+    /* Fundo branco */
+    color: var(--text-button-secondary);
+    /* Texto laranja */
+    border: 2px solid var(--stroke-highlight);
+    /* Borda laranja */
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: var(--surface-secondary);
+    /* Fundo laranja claro no hover/focus */
+    border-color: var(--brand-dark);
+    /* Borda laranja mais escura */
+    color: var(--brand-dark);
+    /* Texto laranja mais escuro */
+    box-shadow: 0 0 0 3px rgba(var(--stroke-highlight-rgb), 0.2);
+    /* Sombra de foco */
+}
+
+.btn-secondary:active {
+    background-color: var(--surface-secondary);
+    border-color: var(--brand-dark);
+    color: var(--brand-dark);
+}
+
+.btn-secondary:disabled {
+    background-color: var(--surface-disabled);
+    border-color: var(--stroke-disabled);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+
+/* ========================================================================= */
+/* --- Estilos para o CHECKBOX Simples (como "Declara que li...") --- */
+/* ========================================================================= */
+
+/* Este é o LABEL que contém o texto e o espaço para o checkbox customizado */
+.checkbox-label {
+    display: flex;
+    /* Para alinhar o quadrado do checkbox com o texto */
+    align-items: center;
+    /* CORREÇÃO: Alinha o checkbox e o texto verticalmente ao centro */
+    gap: 12px;
+    /* Espaço entre o checkbox visual e o texto */
+    cursor: pointer;
+    font-size: var(--body-font-size);
+    /* Usa o tamanho de fonte padrão do corpo */
+    font-family: var(--font-family);
+    /* Sua fonte padrão */
+    color: var(--text-primary);
+    /* Cor padrão do texto do label */
+    line-height: 1.5;
+    /* Altura da linha para o texto, se for multi-linha */
+    /* white-space: normal; */
+    /* overflow-wrap: break-word; */
+}
+
+.sr-only-check {
+    display: flex;
+}
+
+/* O Quadrado VISUAL do Checkbox (pseudoelemento ::before no label) */
+.checkbox-label::before {
+    content: '';
+    display: block;
+    width: 20px;
+    /* Tamanho do quadrado do checkbox */
+    height: 20px;
+    border: 2px solid var(--stroke-default);
+    /* Borda padrão do quadrado */
+    border-radius: 4px;
+    /* Cantos arredondados do quadrado */
+    background-color: var(--surface-primary);
+    /* Fundo branco do quadrado */
+    flex-shrink: 0;
+    /* Impede que o quadrado encolha em telas menores */
+    position: relative;
+    /* Necessário para posicionar o checkmark ::after dentro dele */
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    /* Transição suave */
+}
+
+/* O Checkmark SVG dentro do Quadrado (pseudoelemento ::after no label) */
+.checkbox-label::after {
+    content: '';
+    position: absolute;
+    /* Ajuste top/left para centralizar o checkmark dentro do quadrado */
+    top: 5px;
+    /* Posição do checkmark dentro do quadrado (ajuste fino) */
+    left: 5px;
+    /* Posição do checkmark dentro do quadrado (ajuste fino) */
+    width: 12px;
+    /* Tamanho do checkmark SVG */
+    height: 12px;
+
+    /* Checkmark SVG (branco, o mesmo dos selection-cards, mas menor) */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23FFFFFF"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+    /* Ocupa 100% do width/height do pseudoelemento */
+
+    opacity: 0;
+    /* Escondido por padrão */
+    transform: scale(0.5);
+    /* Começa um pouco menor para efeito de "pop-in" */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Animação suave */
+}
+
+/* --- Estilo dos LINKS dentro do Checkbox Label --- */
+.checkbox-label a {
+    color: var(--stroke-highlight);
+    /* Cor do link (laranja destaque) */
+    text-decoration: underline;
+    /* Sublinhado para links */
+    /* text-decoration: none; // Se quiser remover o sublinhado */
+    font-weight: 500;
+    /* Pode ser um pouco mais grosso para destacar o link */
+    transition: color 0.3s ease;
+}
+
+.checkbox-label a:hover,
+.checkbox-label a:focus {
+    color: var(--brand-dark);
+    /* Cor mais escura no hover/focus */
+}
+
+
+/* --- ESTADOS DO CHECKBOX Simples --- */
+
+/* Hover (mouse sobre o label inteiro) */
+input[type="checkbox"].sr-only:hover+.checkbox-label::before {
+    border-color: var(--stroke-highlight);
+    /* Borda do quadrado fica laranja no hover */
+}
+
+/* Foco (navegando com Tab para o input escondido) */
+input[type="checkbox"].sr-only:focus+.checkbox-label::before {
+    border-color: var(--stroke-highlight);
+    box-shadow: 0 0 0 3px rgba(var(--semantic-error-rgb), 0.2);
+    /* Sombra de foco */
+}
+
+/* CHECKED (Selecionado) */
+input[type="checkbox"].sr-only:checked+.checkbox-label::before {
+    background-color: var(--stroke-highlight);
+    /* Fundo do quadrado fica laranja */
+    border-color: var(--stroke-highlight);
+    /* Borda do quadrado fica laranja */
+}
+
+/* MOSTRAR o Checkmark quando o checkbox está SELECIONADO */
+input[type="checkbox"].sr-only:checked+.checkbox-label::after {
+    opacity: 1;
+    /* Torna o checkmark visível */
+    transform: scale(1);
+    /* Cresce para o tamanho normal */
+}
+
+/* Estilo para a mensagem de erro (se o checkbox for obrigatório e não marcado) */
+.error-message.terms-error-message {
+    color: var(--semantic-error);
+    /* Cor vermelha para erro */
+    font-size: 0.875em;
+    /* Tamanho da fonte menor */
+    margin-top: 4px;
+    /* Espaço acima da mensagem */
+    display: none;
+    /* Escondido por padrão */
+}
+
+.error-message.terms-error-message.show {
+    display: block;
+    /* Mostra a mensagem quando a classe 'show' é adicionada */
+}
+
+/* Opcional: Estilo para o label quando há erro (se você quiser uma borda vermelha no label visual) */
+.checkbox-label.input-error::before {
+    border-color: var(--semantic-error);
+}
+
+.checkbox-label {
+    /* ... outras propriedades ... */
+    flex-wrap: wrap;
+
+    /* TENTA manter tudo na mesma linha */
+}

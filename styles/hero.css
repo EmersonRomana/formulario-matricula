@@ -1,0 +1,60 @@
+header {
+    background-color: var(--surface-secondary);
+    /* serve para fixar na tela e continuar na tela com scroll */
+    position: fixed;
+    /* Deixa a largura ficar em 50% da tela */
+    width: 50vw;
+    /* faz que o header pegue 100% na vertical */
+    height: 100vh;
+    /* Gruda no top */
+    top: 0;
+    /* Gruda na direita */
+    right: 0;
+
+    /* Uso para alinhar o filho que é pai */
+    display: flex;
+    /* alinha na horizontal */
+    justify-content: center;
+    /* alinha na vertical */
+    align-items: center;
+    padding-top: 64px;
+}
+
+#hero {
+    /* Uso para alinhar o filho que é pai */
+    display: flex;
+    /* Posiciona os itens na vertical */
+    flex-direction: column;
+    /* alinha na horizontal */
+    justify-content: center;
+    /* alinha na vertical */
+    align-items: center;
+}
+
+#presentation {
+    margin-bottom: 32px;
+    width: 496px;
+}
+
+#presentation #start {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font: var(--font-school);
+    color: var(--text-primary);
+}
+
+#presentation h1 {
+    margin-block: 8px;
+    font: var(--h1);
+    color: var(--text-primary);
+}
+
+h1 span {
+    color: var(--text-highlight) !important;
+}
+
+#presentation p {
+    font: var(--heading4);
+    color: var(--text-secondary);
+}

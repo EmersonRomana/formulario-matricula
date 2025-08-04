@@ -1,0 +1,17 @@
+@import url(global.css);
+@import url(hero.css);
+@import url(dados-child.css);
+@import url(address.css);
+@import url(reponsavel.css);
+
+.selection-card.is-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--stroke - disabled);
+    background-color: var(--surface - disabled);
+}
+
+.selection-card.is-disabled.card-icon,
+.selection-card.is-disabled.card-text {
+    color: var(--text - disabled);
+}

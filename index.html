@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulário de matrícula</title>
+
+  <!-- Adicionando estilo CSS -->
+  <link rel="stylesheet" href="./styles/index.css" />
+
+  <!-- adicionando Favicon -->
+  <link rel="shortcut icon" href="assets/favicon/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div id="hero">
+      <div id="presentation">
+        <div id="start">
+          <img src="assets/icons/estrela.svg" alt="Estela enfeitando o texto pequena">
+          <h3>Estrelas do Amanhã</h3>
+        </div>
+        <h1>Porque cada momento de <span>aprendizado</span> conta</h1>
+        <p>Inscreva seu filho em nossa escola e veja-o florescer em um ambiente acolhedor, seguro e estimulante.</p>
+      </div>
+      <div id="hero-img">
+        <img src="assets/img/Illustration.png" alt="professora lendo sentada para as crianças">
+      </div>
+    </div>
+  </header>
+
+  <main id="main-form-content container">
+    <section class="container">
+      <div id="back">
+        <img src="assets/icons/arrow-left-02.svg" alt="Voltar icone">
+        <p>Voltar</p>
+      </div>
+      <h2>Formulário de Matricula</h2>
+      <p>Preencha os dados abaixo para matricular seu filho na escola de educação infantil Estrelas do Amanhã.</p>
+
+
+      <div>
+        <h3 class="dados">Informações da criança</h3>
+        <form class="child-info-form">
+          <div class="form-group">
+            <label for="childName">Nome Completo</label>
+            <input type="text" id="childName" name="childName" placeholder="Digite o nome completo da criança"
+              required />
+          </div>
+        </form>
+
+        <form class="child-info-form">
+          <div class="form-group">
+            <label for="dados-nasc">Data de Nascimento</label>
+            <input type="date" id="dados-nasc" name="dados-nasc" required />
+          </div>
+        </form>
+
+        <form class="child-info-form">
+          <div class="form-group">
+            <label for="childGender">Sexo</label>
+            <select id="childGender" name="childGender" required>
+              <option value="" id="select-gender" disabled selected>Selecione</option>
+              <option value="masculino">Masculino</option>
+              <option value="feminino">Feminino</option>
+              <option value="prefiro_nao_dizer">Prefiro não dizer</option>
+            </select>
+          </div>
+        </form>
+
+        <form class="child-info-form">
+          <div class="form-group">
+            <label for="infor-medic">Informações Médicas</label>
+            <textarea id="infor-medic" name="infor-medic" rows="4" maxlength="300"></textarea>
+            <div id="charLimitMessage" class="input-message">
+              Limite atingido <span class="limit-number">300</span> caracteres.
+            </div>
+          </div>
+        </form>
+
+        <form class="child-info-form">
+          <div class="form-group">
+            <label for="birthCertificate">Certidão de nascimento</label>
+
+            <div class="file-upload-container">
+              <input type="file" id="birthCertificate" name="birthCertificate" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                required>
+
+              <div class="file-upload-placeholder">
+                <img src="assets/icons/cloud-upload.svg" alt="Ícone de upload de nuvem" class="upload-icon">
+                <p>Clique aqui para selecionar arquivos</p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="address">
+      <h3 class="dados child-info-form">Endereço residencial</h3>
+      <form class="address-info-form">
+        <div class="form-group">
+          <label for="addressCep">CEP</label>
+          <input type="text" id="addressCep" name="addressCep" placeholder="00000-000" required
+            pattern="[0-9]{5}-[0-9]{3}" />
+        </div>
+
+        <div class="form-row child-info-form">
+          <div class="form-group">
+            <label for="addressStreet">Rua</label>
+            <input type="text" id="addressStreet" name="addressStreet" placeholder="Rua das Flores" disabled />
+          </div>
+
+          <div class="form-group form-group-half "> <label for="addressNumber">Número</label>
+            <input type="text" id="addressNumber" name="addressNumber" placeholder="123" required />
+          </div>
+        </div>
+
+        <div class="form-row child-info-form">
+          <div class="form-group">
+            <label for="addressCity">Cidade</label>
+            <input type="text" id="addressCity" name="addressCity" placeholder="São Paulo" disabled />
+          </div>
+
+          <div class="form-group form-group-half"> <label for="addressState">Estado</label>
+            <input type="text" id="addressState" name="addressState" placeholder="SP" disabled maxlength="2" />
+          </div>
+        </div>
+
+        <div class="form-group child-info-form">
+          <label for="addressComplement">Complemento (opcional)</label>
+          <input type="text" id="addressComplement" name="addressComplement" placeholder="Apto 101, Bloco B" />
+        </div>
+
+      </form>
+    </section>
+
+    <section>
+      <div class="form-section-container">
+        <h3 class="dados">Informações do responsável</h3>
+        <form class="responsible-info-form">
+          <div class="form-group">
+            <label for="responsibleName">Nome do responsável</label>
+            <input type="text" id="responsibleName" name="responsibleName" placeholder="Miguel Roberto Alves"
+              required />
+          </div>
+
+          <p class="helper-text">Principal responsável legal e contato de emergência</p>
+          <div class="form-group">
+            <label for="responsiblePhone">Telefone</label>
+            <input type="tel" id="responsiblePhone" name="responsiblePhone" placeholder="(00) 0 0000-0000" required
+              pattern="^\(\d{2}\)\s\d\s\d{4}-\d{4}$" />
+          </div>
+
+          <div class="form-group">
+            <label for="responsibleEmail" class="gap">E-mail</label>
+            <input type="email" id="responsibleEmail" name="responsibleEmail" placeholder="papaillegal123@exemplo.com"
+              required />
+            <span class="error-message">Insira um e-mail válido</span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="container">
+      <h3 class="dados">Opções de matrícula</h3>
+      <form class="enrollment-options-form">
+        <div class="form-group">
+          <label>Selecione o turno de estudo</label>
+          <div class="card-selection-group turno-options" role="radiogroup" aria-labelledby="turno-estudo-label">
+            <span id="turno-estudo-label" class="sr-only">Selecione o turno de estudo:</span>
+
+            <input type="radio" id="turnoManha" name="turnoEstudo" value="manha" class="sr-only" required>
+            <label for="turnoManha" class="selection-card">
+              <img src="assets/icons/sun-cloud-02.svg" alt="Ícone de nuvem com sol nascendo" class="card-icon">
+              <p class="card-text">Manhã</p>
+            </label>
+
+            <input type="radio" id="turnoTarde" name="turnoEstudo" value="tarde" class="sr-only">
+            <label for="turnoTarde" class="selection-card">
+              <img src="assets/icons/sun-02.svg" alt="Ícone de sol" class="card-icon">
+              <p class="card-text">Tarde</p>
+            </label>
+
+          </div>
+          <span class="error-message radio-error-message">Selecione um turno.</span>
+        </div>
+
+        <div class="form-group">
+          <label>Em qual esporte você gostaria de inscrever seu filho?</label>
+          <div class="card-selection-group esporte-options" role="group" aria-labelledby="esporte-label">
+            <span id="esporte-label" class="sr-only">Selecione os esportes:</span>
+
+            <input type="checkbox" id="sportFutebol" name="sportOption" value="futebol" class="sr-only"
+              data-max-selection="2">
+            <label for="sportFutebol" class="selection-card">
+              <img src="assets/icons/football.svg" alt="Ícone de bola de futebol" class="card-icon">
+              <p class="card-text">Futebol</p>
+            </label>
+
+            <input type="checkbox" id="sportBasquete" name="sportOption" value="basquete" class="sr-only"
+              data-max-selection="2">
+            <label for="sportBasquete" class="selection-card">
+              <img src="assets/icons/basketball-02.svg" alt="Ícone de bola de basquete" class="card-icon">
+              <p class="card-text">Basquete</p>
+            </label>
+
+            <input type="checkbox" id="sportNatacao" name="sportOption" value="natacao" class="sr-only"
+              data-max-selection="2">
+            <label for="sportNatacao" class="selection-card">
+              <img src="assets/icons/swimming.svg" alt="Ícone de nadador" class="card-icon">
+              <p class="card-text">Natação</p>
+            </label>
+
+            <input type="checkbox" id="sportYoga" name="sportOption" value="yoga" class="sr-only"
+              data-max-selection="2">
+            <label for="sportYoga" class="selection-card">
+              <img src="assets/icons/yoga-02.svg" alt="Ícone de pessoa em pose de yoga" class="card-icon">
+              <p class="card-text">Yoga</p>
+            </label>
+
+            <input type="checkbox" id="sportVolei" name="sportOption" value="voleibol" class="sr-only"
+              data-max-selection="2">
+            <label for="sportVolei" class="selection-card">
+              <img src="assets/icons/volleyball.svg" alt="Ícone de bola de vôlei" class="card-icon">
+              <p class="card-text">Voleibol</p>
+            </label>
+          </div>
+          <span class="error-message checkbox-error-message">Selecione no máximo 2 esportes.</span>
+        </div>
+
+      </form>
+    </section>
+
+    <section class="container">
+      <div class="form-group">
+        <input type="checkbox" id="termsAndConditions" name="termsAndConditions" class="sr-only" required>
+        <label for="termsAndConditions" class="checkbox-label">
+          Declara que li e concordo com os <a href="#">Termos e Condições</a> e com a <a href="#">Política de
+            Privacidade</a> da escola Estrela do Amanhã.
+        </label>
+        <span class="error-message terms-error-message">Você deve aceitar os termos e condições.</span>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary">Salvar respostas</button>
+
+        <button type="submit" class="btn btn-primary" style="color: white;">Fazer matrícula</button>
+      </div>
+    </section>
+  </main>
+  <!-- Link do balão de mensagem e Js -->
+  <script src="./script.js"></script>
+</body>
+
+</html>

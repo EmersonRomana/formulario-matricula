@@ -1,0 +1,450 @@
+main {
+    position: relative;
+    width: 50%;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    padding: 64px;
+    min-height: 100vh
+}
+
+main .container {
+    display: flex;
+    flex-direction: column;
+    width: 528px;
+    margin: auto;
+}
+
+#introduction {
+    margin-bottom: 48px;
+}
+
+#back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font: var(--heading5);
+    color: var(--text-secondary);
+}
+
+.container h2 {
+    font: var(--heading2);
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.dados {
+    margin-block: 48px 24px;
+
+}
+
+.child-info-form {
+    margin-top: 24px;
+}
+
+label {
+    display: block;
+    /* Faz o label ocupar sua própria linha */
+    margin-bottom: 4px;
+    /* Espaçamento entre o label e o input */
+    font: var(--heading4);
+    color: var(--text-tertiary);
+}
+
+
+
+/* Ara de Formulário inicio ========================================================================================================== */
+/* Estilo para todos os Inputs de texto, email, password, number etc. */
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="number"],
+input[type="tel"] {
+    /* Adicione outros tipos de input conforme necessário */
+    padding: 16px 12px;
+    /* Espaçamento interno: 16px cima/baixo, 12px esq/dir */
+    width: 100%;
+    /* Ocupa a largura total do seu contêiner pai (.form-group) */
+    border: 2px solid var(--stroke-default);
+    /* Borda padrão */
+    border-radius: 8px;
+    /* Cantos arredondados */
+    background-color: var(--surface-primary);
+    /* Fundo branco do input */
+    color: var(--text-primary);
+    /* Cor do texto digitado */
+    font: var(--heading4);
+    outline: none;
+    /* Remove o contorno padrão do navegador no foco */
+    /* Garante que padding e borda não aumentem a largura total */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Transição suave para foco */
+}
+
+/* Estilo do Placeholder */
+input::placeholder {
+    font: var(--heading4);
+    color: var(--text-secondary);
+    opacity: 1;
+    /* Garante visibilidade total */
+}
+
+/* Para compatibilidade com navegadores mais antigos (Webkit, IE, Edge) */
+input::-webkit-input-placeholder {
+    font: var(--heading4);
+    color: var(--text-secondary);
+    opacity: 1;
+    /* Garante visibilidade total */
+}
+
+input:-ms-input-placeholder {
+    font: var(--heading4);
+    color: var(--text-secondary);
+    opacity: 1;
+    /* Garante visibilidade total */
+}
+
+input::-ms-input-placeholder {
+    font: var(--heading4);
+    color: var(--text-secondary);
+    opacity: 1;
+    /* Garante visibilidade total */
+}
+
+/* Estilo do Input quando está em FOCO (usuário clicou/digitou) */
+input:focus {
+    border-color: var(--stroke-highlight);
+    /* Borda fica com a cor de destaque */
+    box-shadow: 0 0 0 3px rgba(246, 116, 3, 0.2);
+    /* Sombra suave para o foco */
+    /* Se você tiver uma variável RGB para --stroke-highlight, pode usá-la aqui: */
+    /* box-shadow: 0 0 0 3px rgba(var(--stroke-highlight-rgb), 0.2); */
+}
+
+/* Estilo do TEXTO SELECIONADO dentro do input */
+input::selection {
+    background-color: var(--stroke-highlight);
+    /* Cor de fundo da seleção */
+    color: white;
+    /* Cor do texto selecionado */
+}
+
+
+
+/* Area de data de nascimento ======================================================================================== */
+/* Estilo específico para o placeholder do input de Data de Nascimento */
+#dados-nasc {
+    font: var(--heading4);
+    color: var(--text-secondary);
+    opacity: 1;
+}
+
+/* É crucial incluir os prefixos de fornecedor para garantir compatibilidade */
+#dados-nasc::-webkit-input-placeholder {
+    /* Para navegadores baseados em Webkit (Chrome, Safari, Edge antigos) */
+    font: var(--heading4);
+    color: var(--text-secondary);
+    opacity: 1;
+}
+
+#dados-nasc:-ms-input-placeholder {
+    /* Para Internet Explorer 10 e 11 */
+    font: var(--heading4);
+    color: var(--text-secondary);
+    opacity: 1;
+}
+
+#dados-nasc::-ms-input-placeholder {
+    /* Para Microsoft Edge (algumas versões) */
+    font: var(--heading4);
+    color: var(--text-secondary);
+    opacity: 1;
+}
+
+
+/*  Área para seleção de genero */
+/* --- Estilo para o Elemento SELECT (Dropdown)=========================================================================== --- */
+/* Ele deve seguir o mesmo padrão visual dos inputs de texto */
+select {
+    padding: 16px 12px;
+    /* Mesmo padding dos inputs */
+    width: 100%;
+    /* Mesma largura dos inputs */
+    border: 2px solid var(--stroke-default);
+    /* Mesma borda padrão */
+    border-radius: 8px;
+    /* Mesmos cantos arredondados */
+    background-color: var(--surface-primary);
+    /* Mesmo fundo */
+    color: var(--text-primary);
+    /* Mesma cor do texto selecionado */
+    font-size: var(--body-font-size);
+    /* Mesma fonte do texto digitado */
+    font-weight: var(--body-font-weight);
+    font-family: var(--body-font-family);
+    outline: none;
+    /* Remove o contorno padrão do navegador no foco */
+    box-sizing: border-box;
+    /* Garante que padding e borda não aumentem a largura total */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Transição suave para foco */
+
+    /* Para remover a seta padrão do navegador e adicionar uma personalizada se quiser */
+    -webkit-appearance: none;
+    /* Para Chrome/Safari */
+    -moz-appearance: none;
+    /* Para Firefox */
+    appearance: none;
+    /* Padrão */
+    /* Adicionar uma seta personalizada requer um background-image com um SVG ou ícone */
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23a0a0a0"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    /* Posição da seta */
+    background-size: 16px;
+    /* Tamanho da seta */
+}
+
+/* Estilo do SELECT quando está em FOCO */
+select:focus {
+    border-color: var(--stroke-highlight);
+    box-shadow: 0 0 0 3px rgba(246, 116, 3, 0.2);
+}
+
+/* Estilo para a opção "Selecione" (o placeholder visual) */
+/* O seletor `:not([value=""])` ou `:invalid` pode ser útil aqui para mudar a cor
+   quando nenhuma opção válida foi selecionada (o placeholder visual) */
+/* Aplica o estilo do placeholder quando o select é requerido e ainda não tem uma opção válida selecionada */
+select:required:invalid {
+    font: var(--heading4);
+    /* Aplica a fonte do placeholder */
+    color: var(--text-secondary);
+    /* Aplica a cor do placeholder */
+    /* A opacidade geralmente é controlada pela cor do texto, então `opacity: 1` aqui não tem efeito extra */
+}
+
+
+
+
+/* Informações médicas ====================================================================================== */
+/* --- Estilos para o Elemento TEXTAREA --- */
+textarea {
+    padding: 16px 12px;
+    /* Mesmo padding dos inputs */
+    width: 100%;
+    /* Mesma largura dos inputs */
+    border: 2px solid var(--stroke-default);
+    /* Mesma borda padrão */
+    border-radius: 8px;
+    /* Mesmos cantos arredondados */
+    background-color: var(--surface-primary);
+    /* Mesmo fundo */
+    color: var(--text-primary);
+    /* Mesma cor do texto digitado */
+    font-size: var(--body-font-size);
+    /* Mesma fonte do texto digitado */
+    font-weight: var(--body-font-weight);
+    font-family: var(--body-font-family);
+    outline: none;
+    /* Remove o contorno padrão do navegador no foco */
+    box-sizing: border-box;
+    /* Garante que padding e borda não aumentem a largura total */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Transição suave para foco */
+
+    resize: vertical;
+    /* Permite ao usuário redimensionar apenas verticalmente (horizontal é desativado por padrão) */
+    min-height: 100px;
+    /* Altura mínima para o textarea (ajuste conforme necessário) */
+    /* Você pode remover 'rows' do HTML e usar apenas 'min-height' aqui se preferir controlar via CSS */
+}
+
+/* Estilo do TEXTAREA quando está em FOCO (digitando) */
+textarea:focus {
+    border-color: var(--stroke-highlight);
+    /* Borda fica com a cor de destaque */
+    box-shadow: 0 0 0 3px rgba(246, 116, 3, 0.2);
+    /* Sombra suave para o foco */
+}
+
+/* Estilo do Placeholder do TEXTAREA */
+textarea::placeholder {
+    font: var(--heading5);
+    color: var(--text-tertiary);
+    opacity: 1;
+}
+
+/* Prefixos para compatibilidade do placeholder do textarea */
+textarea::-webkit-input-placeholder {
+    font: var(--heading5);
+    color: var(--text-tertiary);
+    opacity: 1;
+}
+
+textarea:-ms-input-placeholder {
+    font: var(--heading5);
+    color: var(--text-tertiary);
+    opacity: 1;
+}
+
+textarea::-ms-input-placeholder {
+    font: var(--heading5);
+    color: var(--text-tertiary);
+    opacity: 1;
+}
+
+/* --- Estilos para o Input/Textarea com ERRO (Borda vermelha) --- */
+/* Certifique-se de que esta regra já existe e está correta */
+input.input-error,
+textarea.input-error {
+    border-color: var(--semantic-error);
+    box-shadow: 0 0 0 3px rgba(var(--semantic-error-rgb), 0.2);
+}
+
+/* --- NOVO: Estilos para o Balão de Mensagem de Erro --- */
+.input-message {
+    display: none;
+    /* Escondido por padrão */
+    margin-top: 8px;
+    /* Espaço entre o textarea e a mensagem */
+    padding: 8px 12px;
+    border: 1px solid var(--stroke-error-message);
+    /* Borda do balão */
+    border-radius: 4px;
+    /* Cantos arredondados do balão */
+    background-color: var(--surface-error-message);
+    /* Fundo do balão */
+    color: var(--text-error-message);
+    /* Cor do texto geral do balão */
+    font-size: 0.8em;
+    /* Fonte menor para a mensagem */
+    line-height: 1.2;
+    text-align: left;
+    /* Alinhamento do texto dentro do balão */
+
+    /* Adicione uma transição para o display para suavizar o aparecimento/desaparecimento */
+    transition: display 0.3s ease;
+}
+
+/* Estilo para o NÚMERO dentro do balão (o "300") */
+.input-message .limit-number {
+    color: var(--semantic-error);
+    /* O número dentro do balão fica vermelho */
+    font-weight: bold;
+    /* E em negrito */
+}
+
+/* Classe para MOSTRAR o balão (adicionada via JavaScript) */
+.input-message.show {
+    display: block;
+    /* Torna o balão visível */
+}
+
+
+
+
+
+/* Área de Upload de arquivo ====================================================================================================== */
+/* --- Novas Variáveis no :root (se você precisar de novas cores ou tamanhos) --- */
+:root {
+    /* ... suas variáveis existentes ... */
+    --surface-light-grey: #F5F5F5;
+    /* Um cinza claro para o fundo do campo de upload */
+    --text-placeholder-upload: #808080;
+    /* Cor para o texto "Clique aqui..." */
+}
+
+/* --- Estilo para o Contêiner do Upload --- */
+.file-upload-container {
+    /* Mesmo padding, borda e raio que seus inputs, para consistência */
+    padding: 24px 16px;
+    width: 100%;
+    border: 2px dashed var(--stroke-default);
+    border-radius: 8px;
+    background-color: var(--surface-primary);
+    /* Fundo branco */
+    box-sizing: border-box;
+    /* Garante que padding e borda não aumentem a largura total */
+    cursor: pointer;
+    /* Indica que é clicável */
+    display: flex;
+    /* Para alinhar icon e texto */
+    flex-direction: column;
+    /* Icone e texto um abaixo do outro */
+    align-items: center;
+    /* Centraliza horizontalmente */
+    justify-content: center;
+    /* Centraliza verticalmente */
+    min-height: 120px;
+    /* Altura mínima do campo de upload, ajuste conforme seu design */
+    text-align: center;
+    /* Centraliza o texto */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Transição suave para foco/hover */
+}
+
+/* --- Estilo para o Input de Arquivo REAL (ESCONDIDO) --- */
+.file-upload-container input[type="file"] {
+    display: none;
+    /* ESSENCIAL: Esconde o input de arquivo nativo */
+}
+
+/* --- Estilo para o Conteúdo VISUAL do Campo de Upload --- */
+.file-upload-placeholder {
+    display: flex;
+    /* Alinha o ícone e o texto dentro do placeholder */
+    flex-direction: column;
+    /* Ícone em cima, texto em baixo */
+    align-items: center;
+    /* Centraliza horizontalmente */
+    gap: 8px;
+    /* Espaço entre o ícone e o texto */
+    width: 180px;
+    /* Ocupa a largura total do container */
+    margin-top: 8px;
+}
+
+.file-upload-placeholder .upload-icon {
+    width: 32px;
+    /* Tamanho do ícone de upload, ajuste conforme necessário */
+    height: 32px;
+    /* Você pode aplicar um filter para mudar a cor do SVG se ele for monocromático */
+    /* filter: invert(0.5) sepia(1) saturate(5) hue-rotate(180deg); */
+    /* Ou definir uma cor se for um SVG com fill="currentColor" e o pai tiver color */
+    color: var(--text-tertiary);
+    /* Cor do ícone se o SVG usar currentColor */
+}
+
+.file-upload-placeholder p {
+    font: var(--heading4);
+    /* Tamanho do texto de instrução */
+    color: var(--text-placeholder-upload);
+    /* Cor do texto "Clique aqui..." */
+    margin: 0;
+    /* Remove margem padrão de parágrafos */
+}
+
+.file-upload-placeholder .file-name {
+    display: block;
+    /* Garante que o nome do arquivo fique em sua própria linha */
+    margin-top: 8px;
+    /* Espaçamento acima do nome do arquivo */
+    font-size: 0.9em;
+    color: var(--text-primary);
+    /* Cor do nome do arquivo */
+    font-style: italic;
+    /* Opcional: para o "Nenhum arquivo selecionado" */
+}
+
+/* --- Estilo do Campo de Upload quando Hover ou Foco --- */
+/* Quando o mouse passa sobre o contêiner ou o input de arquivo REAL recebe foco */
+.file-upload-container:hover,
+.file-upload-container input[type="file"]:focus+.file-upload-placeholder {
+    border-color: var(--stroke-highlight);
+    /* Borda fica com a cor de destaque */
+    box-shadow: 0 0 0 3px rgba(var(--stroke-highlight-rgb), 0.2);
+    /* Sombra suave */
+}
